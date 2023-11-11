@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 # cache path before HF imports just for kicks
 # bc I don't really know when this is pulled by the library
 # TODO change to passing as an arg to the model load fn
-USER = "jkirchen"
+USER = "tsarshah"
 # Huggingface cache
 HF_HOME=f"/cmlscratch/{USER}/.cache/huggingface"
 # HF_HOME=f"/scratch0/{USER}/.cache/huggingface"

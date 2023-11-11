@@ -187,7 +187,7 @@ def load_model(args):
         raise ValueError(f"Unknown model type: {args.model_name_or_path}")
 
     if args.use_gpu:
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+        device = "cuda" if torch.cuda.is_available() else torch.device('mps')#"cpu"
         if args.load_fp16: 
             pass
         else: 
@@ -204,8 +204,6 @@ def generate(prompt, args, model=None, device=None, tokenizer=None):
     """Instatiate the WatermarkLogitsProcessor according to the watermark parameters
        and generate watermarked text by passing it to the generate method of the model
        as a logits processor. """
-    
-    print(f"Generating with {args}")
 
     watermark_processor = WatermarkLogitsProcessor(vocab=list(tokenizer.get_vocab().values()),
                                                     gamma=args.gamma,
@@ -230,6 +228,7 @@ def generate(prompt, args, model=None, device=None, tokenizer=None):
         model.generate,
         **gen_kwargs
     )
+
     generate_with_watermark = partial(
         model.generate,
         logits_processor=LogitsProcessorList([watermark_processor]), 
@@ -304,6 +303,7 @@ def list_format_scores(score_dict, detection_threshold):
 def detect(input_text, args, device=None, tokenizer=None):
     """Instantiate the WatermarkDetection object and call detect on
         the input text returning the scores and outcome of the test"""
+
     watermark_detector = WatermarkDetector(vocab=list(tokenizer.get_vocab().values()),
                                         gamma=args.gamma,
                                         seeding_scheme=args.seeding_scheme,
@@ -662,6 +662,7 @@ def main(args):
                                                                                             model=model, 
                                                                                             device=device, 
                                                                                             tokenizer=tokenizer)
+
         without_watermark_detection_result = detect(decoded_output_without_watermark, 
                                                     args, 
                                                     device=device, 

@@ -1,0 +1,37 @@
+{
+    "os": "macOS-13.5-arm64-arm-64bit",
+    "python": "3.11.4",
+    "heartbeatAt": "2023-11-06T20:23:03.522073",
+    "startedAt": "2023-11-06T20:23:03.474361",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/harshavardhank/Desktop/Code/CS222 NLP/lm-watermarking/experiments/run_watermarking.py",
+    "codePathLocal": "run_watermarking.py",
+    "codePath": "experiments/run_watermarking.py",
+    "git": {
+        "remote": "git@github.com:jwkirchenbauer/lm-watermarking.git",
+        "commit": "5b0e207dca0576f6d77fe740f61a982944ba8460"
+    },
+    "email": null,
+    "root": "/Users/harshavardhank/Desktop/Code/CS222 NLP/lm-watermarking",
+    "host": "Harshavardhans-MacBook-Pro.local",
+    "username": "harshavardhank",
+    "executable": "/Users/harshavardhank/anaconda3/bin/python",
+    "cpu_count": 10,
+    "cpu_count_logical": 10,
+    "disk": {
+        "/": {
+            "total": 460.4317207336426,
+            "used": 78.29318237304688
+        }
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 16.0
+    }
+}
