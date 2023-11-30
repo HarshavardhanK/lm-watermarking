@@ -70,12 +70,9 @@ class WatermarkBase:
         # according to the seeding_scheme
         self._seed_rng(input_ids)
 
-        if self.gamma >= 1.0:
-            print('Gamma is >= 1')
-            raise Exception('Gamma cannot be equal or greater than 1.0')
-        
-
         greenlist_size = int(self.vocab_size * self.gamma)
+        #tsarshah TODO - Get a |V| x k similarity matrix and add the k tokens into the greenlist
+        #tsarshah TODO - remove the token ids from the vocab
         vocab_permutation = torch.randperm(self.vocab_size, device=torch.device('mps'), generator=self.rng) #input_ids.device
         if self.select_green_tokens:  # directly
             greenlist_ids = vocab_permutation[:greenlist_size]  # new
